@@ -27,5 +27,31 @@ namespace Selskapsplanlegger
         {
 
         }
+
+        private void fancyBox_CheckedChanged(object sender, EventArgs e)
+        {
+            middagsSelskap.CalculateCostOfDecorations(fancyBox.Checked);
+            DisplayDinnerParrtyCost();
+        }
+
+        private void healthyBox_CheckedChanged(object sender, EventArgs e)
+        {
+            middagsSelskap.SetHealthyPotion(healthyBox.Checked);
+            DisplayDinnerParrtyCost();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            middagsSelskap.NumberOfPeople = (int)numericUpDown1.Value;
+            DisplayDinnerParrtyCost();
+        }
+
+        private void DisplayDinnerParrtyCost()
+        {
+            decimal Kost = middagsSelskap.CalculateCost(healthyBox.Checked);
+            kost.Text = Kost.ToString("c");
+        }
+
+
     }
 }

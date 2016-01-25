@@ -12,17 +12,18 @@ namespace Selskapsplanlegger
         public int NumberOfPeople;
         public decimal CostOfBeveragesPerPersom;
         public decimal CostOfDecorations = 0;
+        public decimal DagensKurs = 8;
 
 
         public void CalculateCostOfDecorations(bool fancy)
         {
             if (fancy)
             {
-                CostOfDecorations = (NumberOfPeople * 15.00M) + 50M;
+                CostOfDecorations = (NumberOfPeople * 15.00M * DagensKurs) + 50M;
             }
             else
             {
-                CostOfDecorations = (NumberOfPeople * 7.50M) + 30M;
+                CostOfDecorations = (NumberOfPeople * 7.50M * DagensKurs) + 30M;
             }
         }
 
@@ -30,11 +31,11 @@ namespace Selskapsplanlegger
         {
             if (helse)
             {
-                CostOfBeveragesPerPersom = 5.0M;
+                CostOfBeveragesPerPersom = 5.0M * DagensKurs;
             }
             else
             {
-                CostOfBeveragesPerPersom = 20.0M;
+                CostOfBeveragesPerPersom = 20.0M * DagensKurs;
             }
         }
 

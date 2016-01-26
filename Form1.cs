@@ -18,7 +18,8 @@ namespace Selskapsplanlegger
         public Form1()
         {
             InitializeComponent();
-            middagsSelskap = new MiddagsSelskap() { NumberOfPeople = 5 };
+            middagsSelskap = new MiddagsSelskap((int)numericUpDown1.Value,
+                                 healthyBox.Checked, fancyBox.Checked);
             middagsSelskap.CalculateCostOfDecorations ( fancyBox.Checked);
             middagsSelskap.SetHealthyPotion(healthyBox.Checked);
         }

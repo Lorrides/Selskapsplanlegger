@@ -9,22 +9,30 @@ namespace Selskapsplanlegger
     class MiddagsSelskap
     {
         const int CostOfFoodPerPerson = 25;
-        public int NumberOfPeople;
+
+        private int numberOfPeople;
+        public int NumberOfPeople
+        {
+            get { return numberOfPeople; }
+            set
+            {
+                numberOfPeople = value;
+                CalculateCostOfDecorations(fancyDecorations);
+            }
+        }
+        private bool fancyDecorations;
+
         public decimal CostOfBeveragesPerPersom;
         public decimal CostOfDecorations = 0;
         public decimal DagensKurs = 8;
 
 
-        public void CalculateCostOfDecorations(bool fancy)
+        public MiddagsSelskap(int numberOfPeople, bool healtyOption, bool fancyDecorations)
         {
-            if (fancy)
-            {
-                CostOfDecorations = (NumberOfPeople * 15.00M * DagensKurs) + 50M;
-            }
-            else
-            {
-                CostOfDecorations = (NumberOfPeople * 7.50M * DagensKurs) + 30M;
-            }
+            NumberOfPeople = numberOfPeople;
+            this.fancyDecorations = fancyDecorations;
+            SetHealthyPotion(healtyOption);
+            CalculateCostOfDecorations(fancyDecorations);
         }
 
         public void SetHealthyPotion(bool helse)
@@ -36,6 +44,19 @@ namespace Selskapsplanlegger
             else
             {
                 CostOfBeveragesPerPersom = 20.0M * DagensKurs;
+            }
+        }
+
+        public void CalculateCostOfDecorations(bool fancy)
+        {
+            fancyDecorations = fancy;
+            if (fancy)
+            {
+                CostOfDecorations = (NumberOfPeople * 150.00M * DagensKurs) + 50M;
+            }
+            else
+            {
+                CostOfDecorations = (NumberOfPeople * 70.50M * DagensKurs) + 30M;
             }
         }
 
